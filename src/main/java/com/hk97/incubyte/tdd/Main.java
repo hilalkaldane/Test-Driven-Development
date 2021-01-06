@@ -17,7 +17,7 @@ public class Main {
 		}
 		else
 		{
-			String[] numbersArray=numbers.split(",");
+			String[] numbersArray=numbers.split(",|\\n");
 			for (String s : numbersArray) {
 				returnValue += Integer.parseInt(s);
 			}

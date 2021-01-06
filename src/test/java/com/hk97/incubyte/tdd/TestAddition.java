@@ -9,5 +9,6 @@ public class TestAddition {
 	public void testAddition() {
 		assertEquals(0, Main.add(""));
 		assertEquals(5,Main.add("1,4"));
+		assertEquals(6,Main.add("1,2\n3"));
 	}
 }
