@@ -1,5 +1,8 @@
 package com.hk97.incubyte.tdd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Hilal Kaldane
  */
@@ -9,7 +12,7 @@ public class Main {
 	 * @param numbers input numbers for addition
 	 * @return addition of numbers
 	 */
-	public static int add(String numbers) {
+	public int add(String numbers) {
 
 		int returnValue = 0;
 		//checks for value in input
@@ -26,11 +29,39 @@ public class Main {
 				//splits input by delimeter as , and \n
 				numbersArray = numbers.split(",|\\n");
 			}
-			for (String s : numbersArray) {
+			for (String number : numbersArray) {
 				//adds sum of the numbers to returnValue
-				returnValue += Integer.parseInt(s);
+				if (isNegative(Integer.parseInt(number))) {
+					try {
+						throw new NegativeNumberException(numbersArray);
+					}
+					catch (NegativeNumberException e) {
+						System.out.print("Negative Numbers Found ");
+						for (String negativeNumber : e.negativeNumbersArray) {
+							System.out.print(" " + negativeNumber);
+						}
+						return 0;
+					}
+				}
+				returnValue += Integer.parseInt(number);
 			}
 		}
 		return returnValue;
+	}
+
+	static boolean isNegative(int number) {
+		return number < 0;
+	}
+
+	class NegativeNumberException extends Exception {
+		List<String> negativeNumbersArray;
+
+		NegativeNumberException(String[] numbersArray) {
+			negativeNumbersArray = new ArrayList<>();
+			for (String s : numbersArray) {
+				if (isNegative(Integer.parseInt(s)))
+					negativeNumbersArray.add(s);
+			}
+		}
 	}
 }
