@@ -15,6 +15,13 @@ public class Main {
 		if (numbers.trim().isEmpty()) {
 			return returnValue;
 		}
+		else
+		{
+			String[] numbersArray=numbers.split(",");
+			for (String s : numbersArray) {
+				returnValue += Integer.parseInt(s);
+			}
+		}
 		return returnValue;
 	}
 }
