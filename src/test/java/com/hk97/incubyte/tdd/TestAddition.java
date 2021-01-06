@@ -13,5 +13,11 @@ public class TestAddition {
 		assertEquals(6,main.add("1,2\n3"));
 		assertEquals(6,main.add("//;\n1;2;3"));
 		assertEquals(0,main.add("//;\n1;-2;3"));
+		assertEquals(2000,main.add("1000,1000,1001"));
+		assertEquals(2000,main.add("1000,1000\n1001"));
+		assertEquals(2000,main.add("//~\n1000~1000~1001"));
+		assertEquals(0,main.add("//~\n1000~-1000~1001"));
+
+
 	}
 }

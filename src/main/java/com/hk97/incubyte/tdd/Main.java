@@ -36,14 +36,17 @@ public class Main {
 						throw new NegativeNumberException(numbersArray);
 					}
 					catch (NegativeNumberException e) {
-						System.out.print("Negative Numbers Found ");
+						System.out.print("negatives not allowed ");
 						for (String negativeNumber : e.negativeNumbersArray) {
-							System.out.print(" " + negativeNumber);
+							System.out.print(negativeNumber +" ");
 						}
+						System.out.println();
 						return 0;
 					}
 				}
-				returnValue += Integer.parseInt(number);
+				if (Integer.parseInt(number) <= 1000) {
+					returnValue += Integer.parseInt(number);
+				}
 			}
 		}
 		return returnValue;
