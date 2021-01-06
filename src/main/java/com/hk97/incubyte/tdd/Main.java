@@ -1,4 +1,5 @@
 package com.hk97.incubyte.tdd;
+
 /**
  * @author Hilal Kaldane
  */
@@ -15,10 +16,18 @@ public class Main {
 		if (numbers.trim().isEmpty()) {
 			return returnValue;
 		}
-		else
-		{
-			String[] numbersArray=numbers.split(",|\\n");
+		else {
+			String[] numbersArray;
+			if (numbers.startsWith("//")) {
+				//splits numbers based on delimeter provided
+				numbersArray = numbers.split("\\n")[1].split(String.valueOf(numbers.charAt(2)));
+			}
+			else {
+				//splits input by delimeter as , and \n
+				numbersArray = numbers.split(",|\\n");
+			}
 			for (String s : numbersArray) {
+				//adds sum of the numbers to returnValue
 				returnValue += Integer.parseInt(s);
 			}
 		}
